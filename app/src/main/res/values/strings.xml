@@ -2,4 +2,9 @@
     <string name="app_name">ListinTelefonico</string>
     <string name="agregar">agregar</string>
     <string name="la_lista_esta_vacia">la lista esta vacia</string>
+    <string name="nombre">Nombre</string>
+    <string name="apellidos">Apellidos</string>
+    <string name="cancelar">cancelar</string>
+    <string name="aceptar">aceptar</string>
+    <string name="n_de_telefono">Nº de telefono</string>
 </resources>
