@@ -1,12 +1,14 @@
 package com.example.listintelefonico;
 
-public class contactoo {
+import java.io.Serializable;
+
+public class Contacto implements Serializable {
     private String nombre;
     private String apellidos;
     private int telefono;
 
 
-    public contactoo(String nombre, String apellidos, String telefono){
+    public Contacto(String nombre, String apellidos, String telefono){
         this.nombre=nombre;
         this.apellidos=apellidos;
         this.telefono= Integer.parseInt(telefono);

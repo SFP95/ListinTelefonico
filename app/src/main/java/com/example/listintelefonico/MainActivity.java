@@ -20,8 +20,8 @@ public class MainActivity extends AppCompatActivity {
     private ListView listcontactoos;
     private Button bagregar;
     private listacontactoos contactoList = new listacontactoos();
-    private ArrayAdapter<contactoo> adapter;
-    private ArrayList<contactoo> contactoos;
+    private ArrayAdapter<Contacto> adapter;
+    private ArrayList<Contacto> contactos;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
         listcontactoos = findViewById(R.id.lvListacontactoos);
         bagregar = findViewById(R.id.bAgregar);
 
-        contactoos = new ArrayList<>();
+        contactos = new ArrayList<Contacto>();
         adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, contactoList.getcontactosSortedByName());
         listcontactoos.setAdapter(adapter);
 
@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(MainActivity.this, MainActivity2.class);
-                intent.putExtra("contactoo", (CharSequence) contactoos.get(position));
+                intent.putExtra("contactoo", (CharSequence) contactos.get(position));
                 startActivityForResult(intent, EDIT_contacto_REQUEST);
             }
         });
@@ -58,22 +58,22 @@ public class MainActivity extends AppCompatActivity {
                 String nombre = data.getStringExtra("nombre");
                 String apellidos = data.getStringExtra("apellidos");
                 String telefono = data.getStringExtra("telefono");
-                contactoo contacto = new contactoo(nombre, apellidos, telefono);
-                contactoos.add(contacto);
+                Contacto contacto = new Contacto(nombre, apellidos, telefono);
+                contactos.add(contacto);
             } else if (requestCode == EDIT_contacto_REQUEST) {
                 String nombre = data.getStringExtra("nombre");
                 String apellidos = data.getStringExtra("apellidos");
                 String telefono = data.getStringExtra("telefono");
-                contactoo contacto = (contactoo) data.getSerializableExtra("contacto");
+                Contacto contacto = (Contacto) data.getSerializableExtra("contacto");
                 contacto.setNombre(nombre);
                 contacto.setApellidos(apellidos);
                 contacto.setTelefono(Integer.parseInt(telefono));
             }
 
             // Ordenar la lista por nombre y actualizar la vista
-            Collections.sort(contactoos, new Comparator<contactoo>() {
+            Collections.sort(contactos, new Comparator<Contacto>() {
                 @Override
-                public int compare(contactoo c1, contactoo c2) {
+                public int compare(Contacto c1, Contacto c2) {
                     return c1.getFullName().compareToIgnoreCase(c2.getFullName());
                 }
             });

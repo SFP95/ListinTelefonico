@@ -5,35 +5,35 @@ import java.util.Collections;
 import java.util.Comparator;
 
 public class listacontactoos {
-    private ArrayList<contactoo> contactos = new ArrayList<>();
+    private ArrayList<Contacto> contactos = new ArrayList<>();
 
-    public void addcontacto(contactoo contactoo) {
-        contactos.add(contactoo);
+    public void addcontacto(Contacto contacto) {
+        contactos.add(contacto);
     }
 
-    public void removecontacto(contactoo contactoo) {
-        contactos.remove(contactoo);
+    public void removecontacto(Contacto contacto) {
+        contactos.remove(contacto);
     }
 
-    public void updatecontacto(contactoo oldcontacto, contactoo newcontacto) {
+    public void updatecontacto(Contacto oldcontacto, Contacto newcontacto) {
         int index = contactos.indexOf(oldcontacto);
         contactos.set(index, newcontacto);
     }
 
-    public ArrayList<contactoo> getcontactosSortedByName() {
-        Collections.sort(contactos, new Comparator<contactoo>() {
+    public ArrayList<Contacto> getcontactosSortedByName() {
+        Collections.sort(contactos, new Comparator<Contacto>() {
             @Override
-            public int compare(contactoo contacto1, contactoo contacto2) {
+            public int compare(Contacto contacto1, Contacto contacto2) {
                 return contacto1.getnombre().compareTo(contacto2.getnombre());
             }
         });
         return contactos;
     }
 
-    public ArrayList<contactoo> getcontactosSortedByapellidos() {
-        Collections.sort(contactos, new Comparator<contactoo>() {
+    public ArrayList<Contacto> getcontactosSortedByapellidos() {
+        Collections.sort(contactos, new Comparator<Contacto>() {
             @Override
-            public int compare(contactoo contacto1, contactoo contacto2) {
+            public int compare(Contacto contacto1, Contacto contacto2) {
                 return contacto1.getapellidos().compareTo(contacto2.getapellidos());
             }
         });
