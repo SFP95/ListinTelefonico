@@ -1,15 +1,15 @@
 package com.example.listintelefonico;
 
-public class Contacto {
+public class contactoo {
     private String nombre;
     private String apellidos;
     private int telefono;
 
 
-    public Contacto(String nombre, String apellidos, int telefono){
+    public contactoo(String nombre, String apellidos, String telefono){
         this.nombre=nombre;
         this.apellidos=apellidos;
-        this.telefono=telefono;
+        this.telefono= Integer.parseInt(telefono);
     }
 
     public String getNombre() {
@@ -36,11 +36,19 @@ public class Contacto {
         this.telefono = telefono;
     }
 
-    public <T> Comparable<T> getFirstName() {
+    public String getFullName() {
+        return nombre + " " + apellidos;
+    }
+
+    @Override
+    public String toString() {
+        return getFullName();
+    }
+    public <T> Comparable<T> getnombre() {
         return null;
     }
 
-    public <T> Comparable<T> getLastName() {
+    public <T> Comparable<T> getapellidos() {
         return null;
     }
 }

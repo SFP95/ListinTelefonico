@@ -7,7 +7,7 @@
     tools:context=".MainActivity">
 
     <ListView
-        android:id="@+id/lvListaContactos"
+        android:id="@+id/lvListacontactoos"
         android:layout_width="409dp"
         android:layout_height="354dp"
         tools:layout_editor_absoluteX="1dp"
@@ -24,7 +24,7 @@
         app:layout_constraintBottom_toTopOf="@+id/bAgregar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/lvListaContactos" />
+        app:layout_constraintTop_toBottomOf="@+id/lvListacontactoos" />
 
     <Button
         android:id="@+id/bAgregar"

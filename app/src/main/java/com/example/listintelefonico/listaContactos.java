@@ -4,39 +4,39 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 
-public class listaContactos {
-    private ArrayList<Contacto> contacts = new ArrayList<>();
+public class listacontactoos {
+    private ArrayList<contactoo> contactos = new ArrayList<>();
 
-    public void addContact(Contacto contacto) {
-        contacts.add(contacto);
+    public void addcontacto(contactoo contactoo) {
+        contactos.add(contactoo);
     }
 
-    public void removeContact(Contacto contacto) {
-        contacts.remove(contacto);
+    public void removecontacto(contactoo contactoo) {
+        contactos.remove(contactoo);
     }
 
-    public void updateContact(Contacto oldContact, Contacto newContact) {
-        int index = contacts.indexOf(oldContact);
-        contacts.set(index, newContact);
+    public void updatecontacto(contactoo oldcontacto, contactoo newcontacto) {
+        int index = contactos.indexOf(oldcontacto);
+        contactos.set(index, newcontacto);
     }
 
-    public ArrayList<Contacto> getContactsSortedByName() {
-        Collections.sort(contacts, new Comparator<Contacto>() {
+    public ArrayList<contactoo> getcontactosSortedByName() {
+        Collections.sort(contactos, new Comparator<contactoo>() {
             @Override
-            public int compare(Contacto contact1, Contacto contact2) {
-                return contact1.getFirstName().compareTo(contact2.getFirstName());
+            public int compare(contactoo contacto1, contactoo contacto2) {
+                return contacto1.getnombre().compareTo(contacto2.getnombre());
             }
         });
-        return contacts;
+        return contactos;
     }
 
-    public ArrayList<Contacto> getContactsSortedByLastName() {
-        Collections.sort(contacts, new Comparator<Contacto>() {
+    public ArrayList<contactoo> getcontactosSortedByapellidos() {
+        Collections.sort(contactos, new Comparator<contactoo>() {
             @Override
-            public int compare(Contacto contact1, Contacto contact2) {
-                return contact1.getLastName().compareTo(contact2.getLastName());
+            public int compare(contactoo contacto1, contactoo contacto2) {
+                return contacto1.getapellidos().compareTo(contacto2.getapellidos());
             }
         });
-        return contacts;
+        return contactos;
     }
 }
