@@ -35,4 +35,12 @@ public class Contacto {
     public void setTelefono(int telefono) {
         this.telefono = telefono;
     }
+
+    public <T> Comparable<T> getFirstName() {
+        return null;
+    }
+
+    public <T> Comparable<T> getLastName() {
+        return null;
+    }
 }
