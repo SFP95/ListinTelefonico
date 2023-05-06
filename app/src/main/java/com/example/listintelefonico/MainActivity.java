@@ -53,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
                 Contacto contacto = contactAdapter.getItem(position);
                 Intent intent = new Intent(MainActivity.this, MainActivity3.class);
                 intent.putExtra("contact", contacto);
-                startActivityForResult(intent, REQUEST_CODE_EDIT_CONTACT);
+                startActivity(intent);
             }
         });
     }
@@ -95,8 +95,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onAgregar(View view) {
-        Intent intent = new Intent(MainActivity.this, MainActivity2.class);
-        intent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
-        startActivityForResult(intent, REQUEST_CODE_ADD_CONTACT);
+        Intent intent = new Intent(this, MainActivity2.class);
+        startActivity(intent);
     }
 }
