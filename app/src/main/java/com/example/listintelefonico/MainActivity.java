@@ -32,6 +32,12 @@ public class MainActivity extends AppCompatActivity {
         // Inicializar la lista de contactos vacía
         contactList = new ArrayList<>();
 
+        // añadimos contactos  ala lista apr acomprobar que funciona el list view
+        contactList.add(new Contacto("Jessica ", "Lopez","999999999"));
+        contactList.add(new Contacto("Sonia ", "Fernandez","999999999"));
+        contactList.add(new Contacto("Alba ", "Brox","999999999"));
+
+
         // Obtener referencia al ListView
         contactListView = findViewById(R.id.lvListacontactos);
 
