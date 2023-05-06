@@ -53,7 +53,8 @@ public class MainActivity2 extends AppCompatActivity {
         startActivityForResult(intent, ADD_contacto_REQUEST);
     }
     public void onCancelar(View view) {
-        setResult(RESULT_CANCELED);
+        Intent intent = new Intent();
+        setResult(RESULT_CANCELED, intent);
         finish();
     }
     @Override
