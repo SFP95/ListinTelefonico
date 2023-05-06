@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 
-public class listacontactoos {
+public class listacontactos {
     private ArrayList<Contacto> contactos = new ArrayList<>();
 
     public void addcontacto(Contacto contacto) {

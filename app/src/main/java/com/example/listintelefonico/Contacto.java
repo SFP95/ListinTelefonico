@@ -2,7 +2,7 @@ package com.example.listintelefonico;
 
 import java.io.Serializable;
 
-public class Contacto implements Serializable {
+public class Contacto implements Serializable, Comparable<Contacto> {
     private String nombre;
     private String apellidos;
     private int telefono;
@@ -52,5 +52,15 @@ public class Contacto implements Serializable {
 
     public <T> Comparable<T> getapellidos() {
         return null;
+    }
+
+    @Override
+    public int compareTo(Contacto o) {
+        int resultado = this.apellidos.compareToIgnoreCase(o.getApellidos());
+
+        if (resultado == 0) {
+            resultado = this.nombre.compareToIgnoreCase(o.getNombre());
+        }
+        return resultado;
     }
 }

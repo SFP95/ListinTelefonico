@@ -21,7 +21,7 @@ public class MainActivity2 extends AppCompatActivity {
     private static final int EDIT_contacto_REQUEST = 2;
     private ListView listcontactoos;
     private Button bagregar;
-    private listacontactoos contactoList = new listacontactoos();
+    private listacontactos contactoList = new listacontactos();
     private ArrayAdapter<Contacto> adapter;
     private ArrayList<Contacto> contactos;
 
@@ -31,7 +31,7 @@ public class MainActivity2 extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
 
-        listcontactoos = findViewById(R.id.lvListacontactoos);
+        listcontactoos = findViewById(R.id.lvListacontactos);
         bagregar = findViewById(R.id.bAgregar);
 
         contactos = new ArrayList<Contacto>();
