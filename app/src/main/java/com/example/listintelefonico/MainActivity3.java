@@ -26,7 +26,7 @@ public class MainActivity3 extends AppCompatActivity {
             contacto = (Contacto) intent.getSerializableExtra("contact");
             nombre.setText(contacto.getNombre());
             apellidos.setText(contacto.getApellidos());
-            telefono.setText(contacto.getTelefono());
+            //telefono.setText(contacto.getTelefono());
         }
     }
     

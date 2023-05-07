@@ -19,7 +19,7 @@ import java.util.Comparator;
 public class MainActivity2 extends AppCompatActivity {
     private static final int ADD_contacto_REQUEST = 1;
     private static final int EDIT_contacto_REQUEST = 2;
-    private ListView listcontactoos;
+    private ListView listcontactos;
     private Button bagregar;
     private listacontactos contactoList = new listacontactos();
     private ArrayAdapter<Contacto> adapter;
@@ -31,14 +31,14 @@ public class MainActivity2 extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
 
-        listcontactoos = findViewById(R.id.lvListacontactos);
+        listcontactos = findViewById(R.id.lvListacontactos);
         bagregar = findViewById(R.id.bAgregar);
 
         contactos = new ArrayList<Contacto>();
         adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, contactoList.getcontactosSortedByName());
-        listcontactoos.setAdapter(adapter);
+        //listcontactos.setAdapter(adapter); //el boton añadir me da error aqui
 
-        listcontactoos.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        listcontactos.setOnItemClickListener(new AdapterView.OnItemClickListener() {  //tambien da error aqui
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(MainActivity2.this, MainActivity.class);
