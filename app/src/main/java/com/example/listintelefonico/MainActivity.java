@@ -10,6 +10,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -56,6 +57,16 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        //mostrar mensaje de lista vacia en caso de estarlo
+            TextView textView = findViewById(R.id.tvListVacia);
+            if (contactList.isEmpty()) {
+                textView.setVisibility(View.VISIBLE);
+                contactListView.setVisibility(View.GONE);
+            } else {
+                textView.setVisibility(View.GONE);
+                contactListView.setVisibility(View.VISIBLE);
+            }
     }
 
     @Override
