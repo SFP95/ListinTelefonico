@@ -8,7 +8,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -33,11 +32,10 @@ public class MainActivity extends AppCompatActivity {
         // Inicializar la lista de contactos vacía
         contactList = new ArrayList<>();
 
-        // añadimos contactos  ala lista apr acomprobar que funciona el list view
-        contactList.add(new Contacto("Jessica ", "Lopez","999999999"));
-        contactList.add(new Contacto("Sonia ", "Fernandez","999999999"));
-        contactList.add(new Contacto("Alba ", "Brox","999999999"));
-
+        // añadimos contactos ala lista para comprobar que funciona el list view
+        contactList.add(new Contacto("Jessica", "Lopez", "999999999"));
+        contactList.add(new Contacto("Sonia", "Fernandez", "999999999"));
+        contactList.add(new Contacto("Alba", "Brox", "999999999"));
 
         // Obtener referencia al ListView
         contactListView = findViewById(R.id.lvListacontactos);
@@ -45,7 +43,6 @@ public class MainActivity extends AppCompatActivity {
         // Inicializar el adaptador de la lista de contactos y asignarlo al ListView
         contactAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_2, android.R.id.text1, contactList);
         contactListView.setAdapter(contactAdapter);
-
 
         // Agregar listener para el clic en un elemento de la lista de contactos
         contactListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -58,15 +55,15 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        //mostrar mensaje de lista vacia en caso de estarlo
-            TextView textView = findViewById(R.id.tvListVacia);
-            if (contactList.isEmpty()) {
-                textView.setVisibility(View.VISIBLE);
-                contactListView.setVisibility(View.GONE);
-            } else {
-                textView.setVisibility(View.GONE);
-                contactListView.setVisibility(View.VISIBLE);
-            }
+        // Mostrar mensaje de lista vacía en caso de estarlo
+        TextView textView = findViewById(R.id.tvListVacia);
+        if (contactList.isEmpty()) {
+            textView.setVisibility(View.VISIBLE);
+            contactListView.setVisibility(View.GONE);
+        } else {
+            textView.setVisibility(View.GONE);
+            contactListView.setVisibility(View.VISIBLE);
+        }
     }
 
     @Override
@@ -107,6 +104,6 @@ public class MainActivity extends AppCompatActivity {
 
     public void onAgregar(View view) {
         Intent intent = new Intent(this, MainActivity2.class);
-        startActivity(intent);
+        startActivityForResult(intent, REQUEST_CODE_ADD_CONTACT);
     }
 }

@@ -17,13 +17,12 @@ import java.util.Collections;
 import java.util.Comparator;
 
 public class MainActivity2 extends AppCompatActivity {
-    private static final int ADD_contacto_REQUEST = 1;
-    private static final int EDIT_contacto_REQUEST = 2;
+    private static final int ADD_CONTACT_REQUEST = 1;
+    private static final int EDIT_CONTACT_REQUEST = 2;
     private ListView listcontactos;
     private Button bagregar;
-    private listacontactos contactoList = new listacontactos();
-    private ArrayAdapter<Contacto> adapter;
     private ArrayList<Contacto> contactos;
+    private ArrayAdapter<Contacto> adapter;
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -34,45 +33,48 @@ public class MainActivity2 extends AppCompatActivity {
         listcontactos = findViewById(R.id.lvListacontactos);
         bagregar = findViewById(R.id.bAgregar);
 
-        contactos = new ArrayList<Contacto>();
-        adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, contactoList.getcontactosSortedByName());
-        //listcontactos.setAdapter(adapter); //el boton añadir me da error aqui
+        contactos = new ArrayList<>();
 
-        listcontactos.setOnItemClickListener(new AdapterView.OnItemClickListener() {  //tambien da error aqui
+        adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, contactos);
+        listcontactos.setAdapter(adapter);
+
+        listcontactos.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intent = new Intent(MainActivity2.this, MainActivity.class);
-                intent.putExtra("contactoo", (CharSequence) contactos.get(position));
-                startActivityForResult(intent, EDIT_contacto_REQUEST);
+                Intent intent = new Intent(MainActivity2.this, MainActivity3.class);
+                intent.putExtra("contact", contactos.get(position));
+                startActivityForResult(intent, EDIT_CONTACT_REQUEST);
             }
         });
     }
 
     public void onAgregar(View view) {
-        Intent intent = new Intent(MainActivity2.this, MainActivity.class);
-        startActivityForResult(intent, ADD_contacto_REQUEST);
+        Intent intent = new Intent(MainActivity2.this, MainActivity3.class);
+        startActivityForResult(intent, ADD_CONTACT_REQUEST);
     }
+
     public void onCancelar(View view) {
         Intent intent = new Intent();
         setResult(RESULT_CANCELED, intent);
         finish();
     }
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
         if (resultCode == RESULT_OK) {
-            if (requestCode == ADD_contacto_REQUEST) {
-                String nombre = data.getStringExtra("nombre");
-                String apellidos = data.getStringExtra("apellidos");
-                String telefono = data.getStringExtra("telefono");
+            if (requestCode == ADD_CONTACT_REQUEST) {
+                String nombre = data.getStringExtra("nom");
+                String apellidos = data.getStringExtra("apell");
+                String telefono = data.getStringExtra("tlf");
                 Contacto contacto = new Contacto(nombre, apellidos, telefono);
                 contactos.add(contacto);
-            } else if (requestCode == EDIT_contacto_REQUEST) {
-                String nombre = data.getStringExtra("nombre");
-                String apellidos = data.getStringExtra("apellidos");
-                String telefono = data.getStringExtra("telefono");
-                Contacto contacto = (Contacto) data.getSerializableExtra("contacto");
+            } else if (requestCode == EDIT_CONTACT_REQUEST) {
+                String nombre = data.getStringExtra("nom");
+                String apellidos = data.getStringExtra("apell");
+                String telefono = data.getStringExtra("tlf");
+                Contacto contacto = (Contacto) data.getSerializableExtra("contact");
                 contacto.setNombre(nombre);
                 contacto.setApellidos(apellidos);
                 contacto.setTelefono(Integer.parseInt(telefono));
