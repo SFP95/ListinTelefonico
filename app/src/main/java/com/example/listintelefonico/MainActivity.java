@@ -90,14 +90,20 @@ public class MainActivity extends AppCompatActivity {
             // Agregar el nuevo contacto a la lista de contactos
             contactList.add(nuevoContacto);
 
-            // Notificar al adapter que los datos han cambiado
+            // Notificar al adaptador que los datos han cambiado
             contactAdapter.notifyDataSetChanged();
 
             // Mostrar la lista y ocultar el mensaje de lista vacía
             TextView textView = findViewById(R.id.tvListVacia);
-            textView.setVisibility(View.GONE);
-            contactListView.setVisibility(View.VISIBLE);
+            if (contactList.isEmpty()) {
+                textView.setVisibility(View.VISIBLE);
+                contactListView.setVisibility(View.GONE);
+            } else {
+                textView.setVisibility(View.GONE);
+                contactListView.setVisibility(View.VISIBLE);
+            }
         }
     }
+
 
 }
