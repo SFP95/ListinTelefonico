@@ -36,8 +36,8 @@ public class MainActivity extends AppCompatActivity {
 
         // añadimos contactos ala lista para comprobar que funciona el list view
         contactList.add(new Contacto("Jessica", "Lopez", "999999999"));
-        contactList.add(new Contacto("Sonia", "Fernandez", "999999999"));
-        contactList.add(new Contacto("Alba", "Brox", "999999999"));
+        /*contactList.add(new Contacto("Sonia", "Fernandez", "999999999"));
+        contactList.add(new Contacto("Alba", "Brox", "999999999"));*/
 
         // Obtener referencia al ListView
         contactListView = findViewById(R.id.lvListacontactos);
@@ -99,4 +99,5 @@ public class MainActivity extends AppCompatActivity {
             contactListView.setVisibility(View.VISIBLE);
         }
     }
+
 }

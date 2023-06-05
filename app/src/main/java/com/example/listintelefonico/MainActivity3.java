@@ -25,53 +25,13 @@ public class MainActivity3 extends AppCompatActivity {
 
         Intent intent = getIntent();
         contacto = (Contacto) intent.getSerializableExtra("contact");
+        String nom = contacto.getNombre();
+        String ape = contacto.getApellidos();
+        String tlf = String.valueOf(contacto.getTelefono());
 
-        if (contacto != null) {
-            nombre.setText(contacto.getNombre());
-            apellidos.setText(contacto.getApellidos());
-            telefono.setText(contacto.getTelefono());
-            guardar.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    String nom = nombre.getText().toString();
-                    String apell = apellidos.getText().toString();
-                    String tlf = telefono.getText().toString();
+        nombre.setText(nom);
+        apellidos.setText(ape);
+        telefono.setText(tlf);
 
-                    Intent intent = new Intent();
-                    intent.putExtra("nom", nom);
-                    intent.putExtra("apell", apell);
-                    intent.putExtra("tlf", tlf);
-                    intent.putExtra("contact", contacto);
-                    setResult(RESULT_OK, intent);
-                    finish();
-                }
-            });
-
-            borrar.setOnClickListener(v -> {
-                Intent intent1 = new Intent();
-                intent1.putExtra("delete", true);
-                intent1.putExtra("contact", contacto);
-                setResult(RESULT_OK, intent1);
-                finish();
-            });
-        } else {
-            guardar.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    String nom = nombre.getText().toString();
-                    String apell = apellidos.getText().toString();
-                    String tlf = telefono.getText().toString();
-
-                    Intent intent = new Intent();
-                    intent.putExtra("nom", nom);
-                    intent.putExtra("apell", apell);
-                    intent.putExtra("tlf", tlf);
-                    setResult(RESULT_OK, intent);
-                    finish();
-                }
-            });
-
-            borrar.setVisibility(View.GONE);
         }
-    }
 }
