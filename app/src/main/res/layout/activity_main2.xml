@@ -10,7 +10,7 @@
         android:id="@+id/edNombre"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="48dp"
+        android:layout_marginTop="92dp"
         android:ems="10"
         android:hint="@string/nombre"
         android:inputType="textPersonName"
@@ -25,16 +25,32 @@
         android:id="@+id/edApellidos"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="92dp"
+        android:layout_marginTop="52dp"
         android:ems="10"
         android:hint="@string/apellidos"
         android:inputType="textPersonName"
         android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edNombre"
         tools:ignore="Autofill,HardcodedText,TouchTargetSizeCheck" />
+
+    <EditText
+        android:id="@+id/edTelefono"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="@string/n_de_telefono"
+        android:inputType="textPersonName"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toTopOf="@+id/guideline"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.507"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edApellidos"
+        app:layout_constraintVertical_bias="0.348"
+        tools:ignore="Autofill,TouchTargetSizeCheck" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline"
@@ -68,17 +84,4 @@
         app:layout_constraintVertical_bias="0.501"
         tools:ignore="HardcodedText" />
 
-    <EditText
-        android:id="@+id/edTelefono"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="@string/n_de_telefono"
-        android:inputType="textPersonName"
-        android:textAlignment="center"
-        app:layout_constraintBottom_toTopOf="@+id/guideline"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edApellidos"
-        tools:ignore="Autofill,TouchTargetSizeCheck" />
 </androidx.constraintlayout.widget.ConstraintLayout>

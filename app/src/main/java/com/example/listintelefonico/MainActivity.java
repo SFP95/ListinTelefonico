@@ -66,44 +66,10 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
 
-        // Si el resultado es de añadir un nuevo contacto
-        if (requestCode == REQUEST_CODE_ADD_CONTACT && resultCode == RESULT_OK) {
-            String firstName = data.getStringExtra("firstName");
-            String lastName = data.getStringExtra("lastName");
-            String phone = data.getStringExtra("phone");
-            Contacto contacto = new Contacto(firstName, lastName, phone);
-            contactList.add(contacto);
-            Collections.sort(contactList);
-            contactAdapter.notifyDataSetChanged();
-        }
-
-        // Si el resultado es de editar o borrar un contacto existente
-        if (requestCode == REQUEST_CODE_EDIT_CONTACT && resultCode == RESULT_OK) {
-            boolean delete = data.getBooleanExtra("delete", false);
-            Contacto contacto = (Contacto) data.getSerializableExtra("contact");
-
-            if (delete) {
-                contactList.remove(contacto);
-            } else {
-                String firstName = data.getStringExtra("firstName");
-                String lastName = data.getStringExtra("lastName");
-                String phone = data.getStringExtra("phone");
-                Contacto newContact = new Contacto(firstName, lastName, phone);
-                contactList.remove(contacto);
-                contactList.add(newContact);
-            }
-
-            Collections.sort(contactList);
-            contactAdapter.notifyDataSetChanged();
-        }
-    }
 
     public void onAgregar(View view) {
         Intent intent = new Intent(this, MainActivity2.class);
-        startActivityForResult(intent, REQUEST_CODE_ADD_CONTACT);
+        startActivity(intent);
     }
 }
