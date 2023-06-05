@@ -1,5 +1,6 @@
 package com.example.listintelefonico;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
@@ -10,13 +11,14 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 
 public class MainActivity extends AppCompatActivity {
-    private static final int REQUEST_CODE_ADD_CONTACT = 1;
+    private static final int REQUEST_CODE_AGREGAR = 1;
     private static final int REQUEST_CODE_EDIT_CONTACT = 2;
 
     private ListView contactListView;
@@ -70,6 +72,31 @@ public class MainActivity extends AppCompatActivity {
 
     public void onAgregar(View view) {
         Intent intent = new Intent(this, MainActivity2.class);
+        intent.putExtra("añadir",2);
         startActivity(intent);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == REQUEST_CODE_AGREGAR && resultCode == RESULT_OK && data != null) {
+            String nombre = data.getStringExtra("nombre");
+            String apellidos = data.getStringExtra("apellidos");
+            String telefono = data.getStringExtra("telefono");
+
+            // Crear un nuevo objeto Contacto con los datos recibidos
+            Contacto nuevoContacto = new Contacto(nombre, apellidos, telefono);
+
+            // Agregar el nuevo contacto a la lista de contactos
+            contactList.add(nuevoContacto);
+
+            // Notificar al adapter que los datos han cambiado
+            contactAdapter.notifyDataSetChanged();
+
+            // Mostrar la lista y ocultar el mensaje de lista vacía
+            TextView textView = findViewById(R.id.tvListVacia);
+            textView.setVisibility(View.GONE);
+            contactListView.setVisibility(View.VISIBLE);
+        }
     }
 }
