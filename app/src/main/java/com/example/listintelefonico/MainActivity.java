@@ -82,29 +82,7 @@ public class MainActivity extends AppCompatActivity {
         Contacto con = (Contacto) data.getSerializableExtra("contactoNuevo");
         ((ContactoAdapter)(contactListView.getAdapter())).add(con);
 
-        /* if (requestCode == REQUEST_CODE_AGREGAR && resultCode == RESULT_OK && data != null) {
-           String nombre = data.getStringExtra("nombre");
-            String apellidos = data.getStringExtra("apellidos");
-            String telefono = data.getStringExtra("telefono");
 
-            // Crear un nuevo objeto Contacto con los datos recibidos
-            Contacto nuevoContacto = new Contacto(nombre, apellidos, telefono);
-
-            // Agregar el nuevo contacto a la lista de contactos
-            contactList.add(nuevoContacto);
-
-            // Notificar al adaptador que los datos han cambiado
-            contactAdapter.notifyDataSetChanged();
-
-            // Mostrar la lista y ocultar el mensaje de lista vacía
-            TextView textView = findViewById(R.id.tvListVacia);
-            if (contactList.isEmpty()) {
-                textView.setVisibility(View.VISIBLE);
-                contactListView.setVisibility(View.GONE);
-            } else {
-                textView.setVisibility(View.GONE);
-                contactListView.setVisibility(View.VISIBLE);
-            }*/
         }
     }
 
