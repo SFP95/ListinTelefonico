@@ -9,4 +9,5 @@
     <string name="n_de_telefono">Nº de telefono</string>
     <string name="borrar">borrar</string>
     <string name="esta_lista_esta_vacia">Esta lista esta Vacia</string>
+    <string name="apellido">Apellido</string>
 </resources>

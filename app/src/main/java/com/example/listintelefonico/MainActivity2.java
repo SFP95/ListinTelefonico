@@ -48,10 +48,10 @@ public class MainActivity2 extends AppCompatActivity {
         String apell= String.valueOf(apellidos.getText());
         String tlf= String.valueOf(telefono.getText());
 
-        Intent i = new Intent(this, MainActivity.class);
-        i.putExtra("nombre",nom);
-        i.putExtra("apellidos",apell);
-        i.putExtra("telfono",tlf);
+        Contacto contacto = new Contacto(nom, apell,tlf);
+
+        Intent i = new Intent();
+        i.putExtra("contactoNuevo",contacto);
         setResult(RESULT_OK, i);
         finish();
     }

@@ -47,15 +47,7 @@ public class MainActivity extends AppCompatActivity {
         contactListView.setAdapter(contactAdapter);
 
         // Agregar listener para el clic en un elemento de la lista de contactos
-        contactListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Contacto contacto = contactAdapter.getItem(position);
-                Intent intent = new Intent(MainActivity.this, MainActivity3.class);
-                intent.putExtra("contact", contacto);
-                startActivity(intent);
-            }
-        });
+        contactListView.setOnItemClickListener((parent,v,pos,id)->pulsado(parent,v,pos,id));
 
         // Mostrar mensaje de lista vacía en caso de estarlo
         TextView textView = findViewById(R.id.tvListVacia);
@@ -68,6 +60,13 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    private void pulsado(AdapterView<?> parent, View v, int pos, long id) {
+        ListView lv =findViewById(R.id.lvListacontactos);
+       Contacto con = ((ContactoAdapter)(lv.getAdapter())).getView(pos);
+       Intent i = new Intent(this, MainActivity2.class);
+       i.putExtra("contactoNuevo",con);
+       startActivityForResult(i,1);
+    }
 
 
     public void onAgregar(View view) {
@@ -79,8 +78,12 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == REQUEST_CODE_AGREGAR && resultCode == RESULT_OK && data != null) {
-            String nombre = data.getStringExtra("nombre");
+
+        Contacto con = (Contacto) data.getSerializableExtra("contactoNuevo");
+        ((ContactoAdapter)(contactListView.getAdapter())).add(con);
+
+        /* if (requestCode == REQUEST_CODE_AGREGAR && resultCode == RESULT_OK && data != null) {
+           String nombre = data.getStringExtra("nombre");
             String apellidos = data.getStringExtra("apellidos");
             String telefono = data.getStringExtra("telefono");
 
@@ -101,9 +104,9 @@ public class MainActivity extends AppCompatActivity {
             } else {
                 textView.setVisibility(View.GONE);
                 contactListView.setVisibility(View.VISIBLE);
-            }
+            }*/
         }
     }
 
 
-}
+
