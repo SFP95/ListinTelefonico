@@ -14,8 +14,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
 
 public class MainActivity extends AppCompatActivity {
     private static final int REQUEST_CODE_AGREGAR = 1;
@@ -61,12 +59,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void pulsado(AdapterView<?> parent, View v, int pos, long id) {
-        ListView lv = findViewById(R.id.lvListacontactos);
         Contacto con = contactList.get(pos); // Obtener el objeto Contacto de la lista
-        Intent i = new Intent(this, MainActivity2.class);
-        i.putExtra("contactoNuevo", con);
-        startActivityForResult(i, 1);
+        Intent i = new Intent(this, MainActivity3.class);
+        i.putExtra("contact", con);
+        startActivityForResult(i, REQUEST_CODE_EDIT_CONTACT);
     }
+
 
 
     public void onAgregar(View view) {
@@ -79,11 +77,23 @@ public class MainActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        if (data != null) {
-            Contacto con = (Contacto) data.getSerializableExtra("contactoNuevo");
-            ((ContactoAdapter) contactListView.getAdapter()).add(con);
+        if (requestCode == REQUEST_CODE_AGREGAR && resultCode == RESULT_OK) {
+            if (data != null) {
+                Contacto con = (Contacto) data.getSerializableExtra("contactoNuevo");
+                contactList.add(con);
+                contactAdapter.notifyDataSetChanged();
+            }
         }
-
+        if (requestCode == REQUEST_CODE_EDIT_CONTACT && resultCode == RESULT_CANCELED) {
+            Toast.makeText(this, "Elemento Borrado", Toast.LENGTH_SHORT).show();
+            if (data != null) {
+                int deletedPosition = data.getIntExtra("deletedPosition", -1);
+                if (deletedPosition != -1) {
+                    contactList.remove(deletedPosition); // Eliminar el elemento de la lista de contactos
+                    contactAdapter.notifyDataSetChanged(); // Notificar al adaptador del cambio en la lista
+                }
+            }
+        }
     }
 }
 
