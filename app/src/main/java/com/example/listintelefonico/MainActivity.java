@@ -61,11 +61,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void pulsado(AdapterView<?> parent, View v, int pos, long id) {
-        ListView lv =findViewById(R.id.lvListacontactos);
-       Contacto con = ((ContactoAdapter)(lv.getAdapter())).getView(pos);
-       Intent i = new Intent(this, MainActivity2.class);
-       i.putExtra("contactoNuevo",con);
-       startActivityForResult(i,1);
+        ListView lv = findViewById(R.id.lvListacontactos);
+        Contacto con = contactList.get(pos); // Obtener el objeto Contacto de la lista
+        Intent i = new Intent(this, MainActivity2.class);
+        i.putExtra("contactoNuevo", con);
+        startActivityForResult(i, 1);
     }
 
 
@@ -79,12 +79,13 @@ public class MainActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        Contacto con = (Contacto) data.getSerializableExtra("contactoNuevo");
-        ((ContactoAdapter)(contactListView.getAdapter())).add(con);
-
-
+        if (data != null) {
+            Contacto con = (Contacto) data.getSerializableExtra("contactoNuevo");
+            ((ContactoAdapter) contactListView.getAdapter()).add(con);
         }
+
     }
+}
 
 
 
